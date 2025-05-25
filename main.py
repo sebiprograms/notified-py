@@ -1,6 +1,10 @@
 import json
 def main():
-  print(f'hii')
+  with open('info.json', 'r') as openfile:
+    data = json.load(openfile)
+  
+  print(data)
+  
 
 
 
