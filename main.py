@@ -15,10 +15,10 @@ carrier = {
 s = smtplib.SMTP('smtp.gmail.com', 587)
 s.starttls()
   
-s.login("user", "pass")
-message = "Subject\n\n Message"
+s.login(data["email"], data["password"])
+message = "Testing Testing"
   
-s.sendmail("sender", "reciever", message)
+s.sendmail(data["email"], f'{data["number"] + carrier["tmobile"]}', message)
 s.quit()
 
 
