@@ -1,19 +1,14 @@
-import json
-def main():
-  with open('info.json', 'r') as openfile:
-    data = json.load(openfile)
+import smtplib
+
+
+s = smtplib.SMTP('smtp.gmail.com', 587)
+s.starttls()
   
-  print(data)
+s.login("user", "password")
+message = "Subject\n\n Message"
   
+s.sendmail("sender", "reciever", message)
+s.quit()
 
 
 
-
-
-
-
-
-
-
-if __name__ =="__main__":
-  main()
