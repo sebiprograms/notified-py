@@ -1,5 +1,10 @@
 import smtplib
 import json
+import time
+from web_request import * 
+
+
+activate = False
 
 with open("info.json", "r") as file:
   data = json.load(file)
@@ -17,7 +22,13 @@ s.starttls()
   
 s.login(data["email"], data["password"])
 message = "Testing Testing"
-  
+
+print("type in minutes when you'd like a notification to be sent")
+timer = input() * 60
+clock = time.time()
+
+
+
 s.sendmail(data["email"], f'{data["number"] + carrier["tmobile"]}', message)
 s.quit()
 
