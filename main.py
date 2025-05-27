@@ -4,7 +4,7 @@ import json
 with open("info.json", "r") as file:
   data = json.load(file)
 
-
+# Append to the end of your recipient phone number if sending email to sms
 carrier = {
   "tmobile": "@tmomail.net", 
   "at&t":"@txt.att.net",
