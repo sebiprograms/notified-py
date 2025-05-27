@@ -17,20 +17,33 @@ carrier = {
   "sprint": "messaging.sprintpcs.com"}
 
 
-s = smtplib.SMTP('smtp.gmail.com', 587)
-s.starttls()
+
+on = False
+
+print("type in minutes when you'd like a notification to be sent (greater than 0)")
+
+start = float(input()) * 60
+
+if start > 0:
+  on = True
+else:
+  print("type in minutes when you'd like a notification to be sent (greater than 0)")
+  start = input() * 60
+
+while on:
+  currenttime = time.time()
+
+  if currenttime >= start:
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+    s.starttls()
   
-s.login(data["email"], data["password"])
-message = "Testing Testing"
+    s.login(data["email"], data["password"])
+    message = "Testing Testing"
 
-print("type in minutes when you'd like a notification to be sent")
-timer = input() * 60
-clock = time.time()
+    s.sendmail(data["email"], f'{data["number"] + carrier["tmobile"]}', message)
 
-
-
-s.sendmail(data["email"], f'{data["number"] + carrier["tmobile"]}', message)
-s.quit()
+    s.quit()
+    exit
 
 
 
