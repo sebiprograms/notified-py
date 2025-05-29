@@ -28,16 +28,23 @@ def sendmail(data: json):
   s.quit()
 
 
-def timer(minutes): {
-  # Since sleep counts in seconds we * 60
-  time.sleep(minutes* 60)
-}
+def timer(typeoftime, units):
+  """
+  sleeps typeoftime for unit's long
+  typeoftime can be min or sec
+  """
+  if (typeoftime == "min"):
+    time.sleep(units * 60)
+  elif (typeoftime == "sec"):
+    time.sleep(units)
+
 
 def main() :
   with open("info.json", "r") as file:
     data = json.load(file)
-  
 
+  print("input minutes tell sent")
+ 
 
 
 
