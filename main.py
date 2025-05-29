@@ -28,11 +28,15 @@ def sendmail(data: json):
   s.quit()
 
 
+def timer(minutes): {
+  # Since sleep counts in seconds we * 60
+  time.sleep(minutes* 60)
+}
 
 def main() :
   with open("info.json", "r") as file:
     data = json.load(file)
-
+  
 
 
 
