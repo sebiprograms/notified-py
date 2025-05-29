@@ -31,9 +31,12 @@ def sendmail(data: json):
 def timer(typeoftime, units):
   """
   sleeps typeoftime for unit's long
+
   typeoftime can be min or sec
   """
-  if (typeoftime == "min"):
+  if (typeoftime != "min" | typeoftime != "sec" | units < 0):
+    return
+  elif (typeoftime == "min"):
     time.sleep(units * 60)
   elif (typeoftime == "sec"):
     time.sleep(units)
