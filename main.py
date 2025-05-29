@@ -28,29 +28,37 @@ def sendmail(data: json):
   s.quit()
 
 
-def timer(typeoftime, units):
+def timer(typeoftime: str, minsec: float):
   """
   sleeps typeoftime for unit's long
 
   typeoftime can be min or sec
   """
-  if (typeoftime != "min" | typeoftime != "sec" | units < 0):
+  if ((typeoftime != "min") & (typeoftime != "sec") | (minsec < 0)):
+    print("invalid input, skipping timer")
     return
   elif (typeoftime == "min"):
-    time.sleep(units * 60)
+    time.sleep(minsec * 60)
   elif (typeoftime == "sec"):
-    time.sleep(units)
+    time.sleep(minsec)
 
 
-def main() :
+def main():
   with open("info.json", "r") as file:
     data = json.load(file)
+  
+  print("input type of time: min or sec\n")
+  typeoftime = input()
 
-  print("input minutes tell sent")
+  print("input quantity of time chosen\n")
+  minsec = float(input())
+  timer(typeoftime, minsec)
+  sendmail(data)
+  
  
 
 
-
+main()
 
 if __name__ == 'main': 
   main()
