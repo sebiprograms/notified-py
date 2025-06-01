@@ -34,8 +34,8 @@ def timer(typeoftime: str, minsec: float):
 
   typeoftime can be min or sec
   """
-  if ((typeoftime != "min") & (typeoftime != "sec") | (minsec < 0)):
-    print("invalid input, skipping timer")
+  if (((typeoftime != "min") & (typeoftime != "sec")) | (minsec <= 0)):
+    print("invalid input, or no time added skipping timer")
     return
   elif (typeoftime == "min"):
     time.sleep(minsec * 60)
