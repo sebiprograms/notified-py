@@ -16,12 +16,11 @@ carrier = {
   "sprint": "@messaging.sprintpcs.com"}
 
 
-def sendmail(data: json):
+def sendmail(data: json, message: str):
   s = smtplib.SMTP('smtp.gmail.com', 587)
   s.starttls()
 
   s.login(data["email"], data["password"])
-  message = "testing testing\n\n testing testing"
 
   s.sendmail(data["email"], f'{data["number"] + carrier["tmobile"]}', message)
 
@@ -44,6 +43,13 @@ def timer(typeoftime: str, minsec: float):
 
 
 def main():
+  "Project Example webpage status updates via email to sms"
+  if (get_status('https://sebiprograms.github.io/admin-dashboard/') == 200):
+    message = "Alert: Webpage is OK\n\n this is an notification from notify-py"
+    print("page ok")
+  else:
+    message = "Alert: check webpage status\n\n this is an notification from notify-py"
+    print("error check page")
   with open("info.json", "r") as file:
     data = json.load(file)
   
@@ -52,10 +58,11 @@ def main():
 
   print("input quantity of time chosen\n")
   minsec = float(input())
+
   timer(typeoftime, minsec)
-  sendmail(data)
-  
- 
+
+  sendmail(data, message)
+
 
 
 main()
