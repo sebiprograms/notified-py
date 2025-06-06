@@ -1,4 +1,3 @@
-import email.message
 import json 
 import smtplib
 import time 
