@@ -28,7 +28,7 @@ msg.attach(MIMEText(body, 'plain'))
 
 
 
-def sendmail(data: json, message: str):
+def sendmail(data: json):
   """
   Sends messages through mail via SMTP 
   using googles smtp server.
@@ -37,6 +37,7 @@ def sendmail(data: json, message: str):
   in google settings. 
   """
   s = smtplib.SMTP('smtp.gmail.com', 587)
+  # Displays debug messages with timestamp as message is sent
   s.set_debuglevel(2)
   s.starttls()
 
@@ -46,15 +47,25 @@ def sendmail(data: json, message: str):
 
   s.quit()
 
-def api(api_key: str, url: str):
+def api(API_KEY: str, url: str):
   """
   A simple starter api for accessing data for use with 
   notified message futures
   """
-  url = f'{url + api_key}'
-  response = requests.get(url)
+  params = {
+    'country': 'us',
+    'apiKey': API_KEY,
+    'pageSize': 1
+  }
+
+  url = f'{url + API_KEY}'
+  response = requests.get(url, params=params)
   if response.status_code == 200:
     pagedata = response.json()
+    #test
+    print(pagedata)
+  else:
+    print(f'Error: {response.status_code}')
 
 
 def timer(typeoftime: str, minsec: float):
