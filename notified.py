@@ -2,6 +2,7 @@ import json
 import smtplib
 import time 
 import email
+import requests
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 #Append to the end of your recipient phone number if sending email to sms
@@ -45,6 +46,16 @@ def sendmail(data: json, message: str):
 
   s.quit()
 
+def api(api_key: str, url: str):
+  """
+  A simple starter api for accessing data for use with 
+  notified message futures
+  """
+  url = f'{url + api_key}'
+  response = requests.get(url)
+  if response.status_code == 200:
+    pagedata = response.json()
+
 
 def timer(typeoftime: str, minsec: float):
   """
@@ -62,3 +73,4 @@ def timer(typeoftime: str, minsec: float):
     time.sleep(minsec * 60)
   elif (typeoftime == "sec"):
     time.sleep(minsec)
+
