@@ -21,7 +21,7 @@ def sendmail(data: json, message: str):
   Password must be an app password can be created
   in google settings. 
   """
-  s = smtplib.SMTP_SSL('smtp.gmail.com', 587)
+  s = smtplib.SMTP('smtp.gmail.com', 587)
   s.starttls()
 
   s.login(data["email"], data["password"])
