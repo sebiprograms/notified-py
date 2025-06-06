@@ -1,7 +1,7 @@
 import smtplib
 import json
 import time
-import notified
+from notified import *
 from web_request import * 
 
 

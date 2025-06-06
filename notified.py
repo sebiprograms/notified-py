@@ -22,6 +22,7 @@ def sendmail(data: json, message: str):
   in google settings. 
   """
   s = smtplib.SMTP('smtp.gmail.com', 587)
+  s.set_debuglevel(2)
   s.starttls()
 
   s.login(data["email"], data["password"])
@@ -36,6 +37,9 @@ def timer(typeoftime: str, minsec: float):
   sleeps typeoftime for unit's long
 
   typeoftime can be min or sec
+
+  must be used prior to smtp connection or 
+  will disconnect abruptley 
   """
   if (((typeoftime != "min") & (typeoftime != "sec")) | (minsec <= 0)):
     print("invalid input, or no time added skipping timer")
