@@ -10,7 +10,7 @@ from email.mime.text import MIMEText
 #domain name. Must be appended to phone number
 #in -> sendmail(sender, recievernumber@carrierdomain.com, message)
 carrier = {
-  "tmobile": "@tmomail.net", 
+  "tmobile": "@tmomail.net",
   "at&t":"@txt.att.net",
   "verizon": "@vtext.com",
   "sprint": "@messaging.sprintpcs.com"}
