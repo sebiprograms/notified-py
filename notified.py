@@ -1,10 +1,10 @@
 import json 
 import smtplib
 import time 
-import email
 import requests
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
 #Append to the end of your recipient phone number if sending email to sms
 #Specifices the mobile carrier's 
 #domain name. Must be appended to phone number
@@ -19,16 +19,21 @@ with open("info.json", "r") as file:
   data = json.load(file)
 
 #Message mime
-msg = MIMEMultipart()
-msg['From'] = data['email']
-msg['To'] = f'{data["number"] + carrier["tmobile"]}'
-msg['Subject'] = 'Test Email'
-body = 'This is a test email sent from python'
-msg.attach(MIMEText(body, 'plain'))
+def message(data: json, subject: str, body: str):
+  """
+  Creates a MIME message object
+  json data must have the fields below
+  """
+  msg = MIMEMultipart()
+  msg['From'] = data['email']
+  msg['To'] = data['recipient']
+  msg['Subject'] = subject
+  msg.attach(MIMEText(body, 'plain'))
+  return msg
 
 
 
-def sendmail(data: json):
+def sendmail(data: json, msg: MIMEMultipart):
   """
   Sends messages through mail via SMTP 
   using googles smtp server.

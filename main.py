@@ -1,6 +1,4 @@
-import smtplib
 import json
-import time
 from notified import *
 
 
@@ -22,8 +20,8 @@ def main():
   minsec = float(input())
 
   timer(typeoftime, minsec)
-
-  sendmail(data)
+  msg = message(data, "This is a Notified App Alert\r\n", "Notified is an easy to use smtp python library allowing email to sms alerts")
+  sendmail(data, msg)
 
 
 
