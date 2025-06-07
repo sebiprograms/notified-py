@@ -50,7 +50,7 @@ def sendmail(data: json):
 def api(url: str, API_KEY: str):
   """
   A simple starter api for accessing data for use with 
-  notified message futures
+  notified message features
   """
   params = {
     'country': 'us',
