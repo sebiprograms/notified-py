@@ -47,7 +47,7 @@ def sendmail(data: json):
 
   s.quit()
 
-def api(API_KEY: str, url: str):
+def api(url: str, API_KEY: str):
   """
   A simple starter api for accessing data for use with 
   notified message futures
@@ -58,7 +58,6 @@ def api(API_KEY: str, url: str):
     'pageSize': 1
   }
 
-  url = f'{url + API_KEY}'
   response = requests.get(url, params=params)
   if response.status_code == 200:
     pagedata = response.json()
