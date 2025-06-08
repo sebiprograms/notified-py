@@ -27,5 +27,4 @@ def main():
 main()
 
 if __name__ == 'main': 
-  SocketModeHandler(app, data['xapp'])
   main()
