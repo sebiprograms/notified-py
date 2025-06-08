@@ -4,10 +4,6 @@ import time
 import requests
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-<<<<<<< HEAD:notified.py
-from slack_sdk import *
-=======
->>>>>>> 09c26e5d545e94e8dc3a62e572f6defe95eb0bfd:notified_py/notified.py
 
 #Append to the end of your recipient phone number if sending email to sms
 #Specifices the mobile carrier's 

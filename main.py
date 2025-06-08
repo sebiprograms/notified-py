@@ -1,7 +1,6 @@
 import json
-from notified import *
-
-
+from notified_py import *
+from notified_py.app import *
 
 
 def main():
@@ -28,5 +27,5 @@ def main():
 main()
 
 if __name__ == 'main': 
-  app.start(3000)  # POST http://localhost:3000/slack/events
+  SocketModeHandler(app, data['xapp'])
   main()
