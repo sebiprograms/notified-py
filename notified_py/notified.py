@@ -71,16 +71,6 @@ def api(url: str, API_KEY: str):
   else:
     print(f'Error: {response.status_code}')
 
-def slack_connection() {
-  
-
-}
-
-
-
-
-
-
 def timer(typeoftime: str, minsec: float):
   """
   sleeps typeoftime for unit's long
