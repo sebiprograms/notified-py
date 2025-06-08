@@ -1,18 +1,20 @@
 import json 
 import smtplib
 import time 
-import email
 import requests
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+<<<<<<< HEAD:notified.py
 from slack_sdk import *
+=======
+>>>>>>> 09c26e5d545e94e8dc3a62e572f6defe95eb0bfd:notified_py/notified.py
 
 #Append to the end of your recipient phone number if sending email to sms
 #Specifices the mobile carrier's 
 #domain name. Must be appended to phone number
 #in -> sendmail(sender, recievernumber@carrierdomain.com, message)
 carrier = {
-  "tmobile": "@tmomail.net", 
+  "tmobile": "@tmomail.net",
   "at&t":"@txt.att.net",
   "verizon": "@vtext.com",
   "sprint": "@messaging.sprintpcs.com"}
@@ -21,16 +23,21 @@ with open("info.json", "r") as file:
   data = json.load(file)
 
 #Message mime
-msg = MIMEMultipart()
-msg['From'] = data['email']
-msg['To'] = f'{data["number"] + carrier["tmobile"]}'
-msg['Subject'] = 'Test Email'
-body = 'This is a test email sent from python'
-msg.attach(MIMEText(body, 'plain'))
+def message(data: json, subject: str, body: str):
+  """
+  Creates a MIME message object
+  json data must have the fields below
+  """
+  msg = MIMEMultipart()
+  msg['From'] = data['email']
+  msg['To'] = data['recipient']
+  msg['Subject'] = subject
+  msg.attach(MIMEText(body, 'plain'))
+  return msg
 
 
 
-def sendmail(data: json):
+def sendmail(data: json, msg: MIMEMultipart):
   """
   Sends messages through mail via SMTP 
   using googles smtp server.
