@@ -1,5 +1,5 @@
 import json
-from notified_py.notified import *
+from notified import *
 
 
 
@@ -28,4 +28,5 @@ def main():
 main()
 
 if __name__ == 'main': 
+  app.start(3000)  # POST http://localhost:3000/slack/events
   main()
