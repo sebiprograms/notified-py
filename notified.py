@@ -5,6 +5,8 @@ import email
 import requests
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from slack_sdk import *
+
 #Append to the end of your recipient phone number if sending email to sms
 #Specifices the mobile carrier's 
 #domain name. Must be appended to phone number
@@ -65,6 +67,15 @@ def api(url: str, API_KEY: str):
     print(pagedata)
   else:
     print(f'Error: {response.status_code}')
+
+def slack_connection() {
+  
+
+}
+
+
+
+
 
 
 def timer(typeoftime: str, minsec: float):
