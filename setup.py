@@ -9,6 +9,7 @@ setup(
   packages=find_packages(),
   install_requires=[
     'requests==2.32.3'
+    'slack_bolt==1.23.0'
   ],
   long_description=long_description,
   long_description_content_type='text/markdown'
