@@ -12,9 +12,11 @@ class Notified_slack:
     Creates a slack bot, event handling can be created
     by
     Example:
-        >>>  @name_of_object.app.event()
+
+        >>> @app.event(type)
         >>>     def func():
-        >>>         event handling here 
+        >>>       event handling here 
+
     Uses sockets not http request
     """
     with open('info.json', 'r') as file:
