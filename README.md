@@ -14,5 +14,5 @@ pip install notified_py
 - [x] Basic email notification support
 - [x] SMS notification support
 - [ ] Desktop notification support
-- [ ] Slack and webhook support
+- [x] Slack and webhook support
 - [ ] Advanced configuration and templating
