@@ -1,6 +1,6 @@
 import json
 from notified_py import *
-from notified_py.app import *
+from notified_py.slack_bot import *
 
 
 def main():
