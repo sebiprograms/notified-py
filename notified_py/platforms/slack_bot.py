@@ -13,7 +13,8 @@ class Notified_slack:
     by
     @name_of_object.app.event()
         def func():
-            event handling here
+            event handling here 
+    Uses sockets not http request
     """
     with open('info.json', 'r') as file:
         data = json.load(file)
