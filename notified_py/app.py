@@ -9,6 +9,8 @@ def no_bot_messages(message, next):
     if subtype != "bot_message":
         next()
 
+
+
 with open('info.json', 'r') as file:
     data = json.load(file)
 
@@ -16,18 +18,13 @@ with open('info.json', 'r') as file:
 app = App(token=data['bot_user_auth'],)
 
 
+
 handler = SocketModeHandler(app, data['xapp'])
 
-@app.event(event="message", middleware=[no_bot_messages])
-def log_message(logger, event):
-    logger.info(f"(MSG) User: {event['user']}\nMessage: {event['text']}")
+@app.event(event="app_mention")
+def test_mention():
+    print("bot was mentioned in Slack")
 
-@app.event(
-    event="message",
-    matchers=[no_bot_messages]
-)
-def log_message(logger, event):
-    logger.info(f"(MSG) User: {event['user']}\nMessage: {event['text']}")
 
 handler.start()
 
