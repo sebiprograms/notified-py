@@ -21,12 +21,16 @@ class Notified_slack:
     def __init__(self):
         self.app = App(token=data['bot_user_auth'])
     def start(self):
-        handler = SocketModeHandler(self.app, data['xapp'])
-        handler.start()
+        """
+        ALL middleware and event handling must be declared
+        before start()!!!
+        """
+        self.handler = SocketModeHandler(self.app, data['xapp'])
+        self.handler.start()
         # Allows socket connection so web requests don't 
         # need to be handled manually
 
-# Creates 
+
 bot = Notified_slack()
 
 # Any eventlisteners or middleware goes here
