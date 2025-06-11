@@ -1,4 +1,7 @@
 import os
+import logging
+from slack_sdk import WebClient
+from slack_sdk.errors import SlackApiError
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_bolt.kwargs_injection.args import *
@@ -40,6 +43,11 @@ bot = Notified_slack()
 @bot.app.event(event="app_mention")
 def test_mention():
     print("bot was mentioned in Slack")
+
+@bot.app.message("say")
+def say_hello(message, say) :
+    user = message['user']
+    Say("testing if it works")
 
 bot.start()
 
